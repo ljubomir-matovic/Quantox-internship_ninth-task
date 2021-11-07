@@ -13,3 +13,6 @@ export const REMOVE_ALL_FROM_CART = "REMOVE_ALL_FROM_CART";
 export const ADD_ALL_TO_CART = "ADD_ALL_TO_CART";
 export const INCREMENT_CART_ITEM = "INCREMENT_CART_ITEM";
 export const DECREMENT_CART_ITEM = "DECREMENT_CART_ITEM";
+/*Modal*/
+export const SHOW_MODAL = "SHOW_MODAL";
+export const HIDE_MODAL = "HIDE_MODAL";

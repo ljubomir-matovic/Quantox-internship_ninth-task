@@ -9,6 +9,7 @@ import ItemsContainer from "components/ItemsContainer";
 import Error404 from "components/Error404";
 import Details from "components/Details";
 import CartContainer from "components/CartContainer";
+import Modal from "components/Modal";
 function App() {
     const state = useSelector((state) => state);
     const dispatch = useDispatch();
@@ -35,6 +36,13 @@ function App() {
                         <Route exact path="/cart" element={<CartContainer />} />
                         <Route path="*" element={<Error404 />} />
                     </Routes>
+                    <Modal
+                        show={state.modal.show}
+                        name={state.modal.name}
+                        onClose={() => {
+                            dispatch(actions.modalActions.hideModal());
+                        }}
+                    />
                 </Router>
             )}
             {state.products.loading && (

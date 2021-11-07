@@ -40,9 +40,12 @@ function Item({ match = null, clickHandler = () => {} }) {
                     <h2 className="in-cart-message">Item is in cart</h2>
                 ) : (
                     <p
-                        onClick={() =>
-                            dispatch(actions.cartActions.addToCart(data))
-                        }
+                        onClick={() => {
+                            dispatch(actions.cartActions.addToCart(data));
+                            dispatch(
+                                actions.modalActions.showModal(data.title)
+                            );
+                        }}
                         className="add-icon"
                     >
                         Add to cart
