@@ -4,11 +4,11 @@ import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { createStore, applyMiddleware } from "redux";
-import { reducer } from "reducers";
+import { allReducers } from "reducers";
 import { Provider } from "react-redux";
 import thunk from "redux-thunk";
 const store = createStore(
-    reducer, //applying middelware for asynchronous action and devtools extension
+    allReducers, //applying middelware for asynchronous action and devtools extension
     applyMiddleware(thunk) &&
         window.__REDUX_DEVTOOLS_EXTENSION__ &&
         window.__REDUX_DEVTOOLS_EXTENSION__()
