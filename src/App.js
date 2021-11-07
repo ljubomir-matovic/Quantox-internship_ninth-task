@@ -14,6 +14,7 @@ function App() {
     const state = useSelector((state) => state);
     const dispatch = useDispatch();
     useEffect(() => {
+        actions.productsActions.fetchCategories()(dispatch);
         actions.productsActions.fetchProducts()(dispatch);
         dispatch(actions.cartActions.getFromLocalStorage());
     }, [dispatch]);

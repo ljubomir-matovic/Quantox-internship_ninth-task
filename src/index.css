@@ -23,7 +23,7 @@ body {
 .container {
     display: flex;
     flex-direction: column;
-    gap: 30px;
+    gap: 40px;
 }
 .container > :nth-child(2) {
     margin-top: 70px;
@@ -39,7 +39,6 @@ body {
 }
 .container > .items-container {
     padding: 10px;
-    margin-top: 70px;
 }
 /*Spinner*/
 .loader {

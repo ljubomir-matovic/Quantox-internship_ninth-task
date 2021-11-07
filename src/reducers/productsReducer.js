@@ -1,28 +1,49 @@
 import {
     APPLY_FILTER,
+    FETCH_CATEGORIES,
     FETCH_PRODUCTS,
-    REMOVE_FILTER,
     SORT_PRODUCTS,
 } from "constans";
 export const productsReducer = (
-    currentState = { allProducts: [], show: [], loading: true },
+    currentState = { allProducts: [], show: [], categories: [], loading: true },
     action
 ) => {
     let state = { ...currentState };
     switch (action.type) {
         case FETCH_PRODUCTS:
-            state.allProducts = action.data;
-            state.show = action.data;
+            state.allProducts = [...action.data];
+            state.show = [...action.data];
             state.loading = false;
             return state;
-        case APPLY_FILTER:
-            state.show = state.allProducts.filter(action.filter);
+        case FETCH_CATEGORIES:
+            state.categories = action.data;
             return state;
-        case REMOVE_FILTER:
-            state.show = state.allProducts;
+        case APPLY_FILTER:
+            if (state.categories.indexOf(action.filter) > -1)
+                state.show = state.allProducts.filter(
+                    (v) => action.filter == v.category
+                );
+            else state.show = [...state.allProducts];
             return state;
         case SORT_PRODUCTS:
-            state.show.sort(action.sort);
+            let f;
+            switch (action.name) {
+                case "title":
+                    f = (a, b) => action.sort(a.title, b.title);
+                    break;
+                case "price":
+                    f = (a, b) => action.sort(a.price, b.price);
+                    break;
+                case "rating":
+                    f = (a, b) => action.sort(a.rating.rate, b.rating.rate);
+                    break;
+                default:
+                    state.show = [...state.allProducts];
+                    return state;
+            }
+            if (typeof f == "function") {
+                state.show.sort(f);
+            }
             return state;
         default:
             return state;

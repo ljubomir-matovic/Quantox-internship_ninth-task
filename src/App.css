@@ -135,6 +135,25 @@
     padding: 20px;
     border-radius: 30px;
 }
+select,select:hover,select:focus{
+    outline:none !important;
+}
+.sortable{
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    background-color:var(--white);
+    gap:20px;
+    padding:20px;
+}
+.dropdown{
+    display:flex;
+    flex-direction:column;
+    gap:10px;
+}
+label{
+    color:black;
+}
 /*Desktop*/
 @media screen and (min-width: 1000px) {
     .item {
